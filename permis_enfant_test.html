@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test du Petit Pilote</title>
+    <script>
+        function verifierReponses() {
+            let score = 0;
+            let reponsesCorrectes = ["b", "b", "a", "a", "b"];
+            let questions = document.querySelectorAll(".question");
+            let nomEnfant = document.getElementById("nomEnfant").value;
+            
+            questions.forEach((question, index) => {
+                let reponseSelectionnee = question.querySelector("input:checked");
+                if (reponseSelectionnee) {
+                    if (reponseSelectionnee.value === reponsesCorrectes[index]) {
+                        score++;
+                    }
+                }
+            });
+            
+            let resultat = document.getElementById("resultat");
+            let reussite = "non";
+            if (score >= 4) {
+                resultat.innerHTML = `🎉 Bravo ${nomEnfant} ! Tu as réussi le test et tu obtiens ton permis ! 🚗✨<br><a href='https://eelmaymouny.github.io/PERMIS/' target='_blank'>Clique ici pour générer ton permis</a>`;
+                resultat.style.color = "green";
+                reussite = "oui";
+            } else {
+                resultat.innerHTML = `😢 Oups ${nomEnfant} ! Tu n'as pas assez de bonnes réponses. Réessaie encore !`;
+                resultat.style.color = "red";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Test du Petit Pilote 🚦</h1>
+        <label>Nom de l'enfant :</label>
+        <input type="text" id="nomEnfant" placeholder="Entrez le nom">
+        
+        <form>
+            <div class="question">
+                <p>1️⃣ Quelle est la couleur du feu qui signifie "Stop" ?</p>
+                <input type="radio" name="q1" value="a"> a) Vert<br>
+                <input type="radio" name="q1" value="b"> b) Rouge<br>
+                <input type="radio" name="q1" value="c"> c) Bleu<br>
+            </div>
+        </form>
+        <button onclick="verifierReponses()">Vérifier mes réponses</button>
+        <p id="resultat"></p>
+    </div>
+</body>
+</html>
