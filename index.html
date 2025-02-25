@@ -30,8 +30,46 @@
                 resultat.innerHTML = `😢 Oups ${nomEnfant} ! Tu n'as pas assez de bonnes réponses. Réessaie encore !`;
                 resultat.style.color = "red";
             }
+            envoyerEmail(nomEnfant, reussite);
+        }
+        
+        function envoyerEmail(nom, reussite) {
+            let email = "eelmaymouny@yahoo.fr";
+            let sujet = "Résultat du test du Petit Pilote";
+            let corps = `Bonjour,\n\nL'enfant ${nom} a passé le test du Petit Pilote.\nRéussite : ${reussite ? "Oui" : "Non"}.\n\nCordialement,\nAcadémie des petits râleurs`;
+            
+            window.location.href = `mailto:${email}?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(corps)}`;
         }
     </script>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background-color: #ffebcd;
+        }
+        .container {
+            width: 60%;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff3cd;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px orange;
+            border: 3px solid #ff4500;
+        }
+        h1 {
+            color: #ff4500;
+        }
+        button {
+            padding: 12px 24px;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            margin-top: 15px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -46,9 +84,40 @@
                 <input type="radio" name="q1" value="b"> b) Rouge<br>
                 <input type="radio" name="q1" value="c"> c) Bleu<br>
             </div>
+            
+            <div class="question">
+                <p>2️⃣ Quand on traverse une route, il faut toujours :</p>
+                <input type="radio" name="q2" value="a"> a) Courir vite sans regarder<br>
+                <input type="radio" name="q2" value="b"> b) Regarder des deux côtés avant de traverser<br>
+                <input type="radio" name="q2" value="c"> c) Fermer les yeux et avancer<br>
+            </div>
+            
+            <div class="question">
+                <p>3️⃣ Quand tu es à vélo, il faut toujours :</p>
+                <input type="radio" name="q3" value="a"> a) Mettre un casque 🚴‍♂️<br>
+                <input type="radio" name="q3" value="b"> b) Rouler sans les mains ✋<br>
+                <input type="radio" name="q3" value="c"> c) Fermer les yeux pour le fun<br>
+            </div>
+            
+            <div class="question">
+                <p>4️⃣ Si tu veux tourner à droite en trottinette, que dois-tu faire ?</p>
+                <input type="radio" name="q4" value="a"> a) Lever la main droite pour prévenir les autres<br>
+                <input type="radio" name="q4" value="b"> b) Crier "Attention !" et foncer<br>
+                <input type="radio" name="q4" value="c"> c) Fermer les yeux et espérer que tout ira bien<br>
+            </div>
+            
+            <div class="question">
+                <p>5️⃣ Que dois-tu faire si un ballon roule sur la route ?</p>
+                <input type="radio" name="q5" value="a"> a) Courir après sans regarder<br>
+                <input type="radio" name="q5" value="b"> b) Vérifier qu’il n’y a pas de voiture avant d’aller le chercher<br>
+                <input type="radio" name="q5" value="c"> c) Laisser le ballon et demander à un adulte<br>
+            </div>
         </form>
         <button onclick="verifierReponses()">Vérifier mes réponses</button>
         <p id="resultat"></p>
     </div>
 </body>
+<footer style="margin-top: 20px; font-size: 16px; color: #ff4500; font-weight: bold;">Académie des petits râleurs</footer>
 </html>
+
+
